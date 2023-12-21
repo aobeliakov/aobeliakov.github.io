@@ -48,7 +48,8 @@ div.menu_item {
 
 .not_chosen:hover,
 svg:hover,
-img:hover {
+img:hover,
+.next:hover {
   opacity: 1;
   color: #ffbb5b;
   cursor: pointer;
@@ -152,8 +153,8 @@ span {
   width: 99%;
 }
 
-.card:hover {
-  transform: scale(1.05,1.05);
+.card:hover, .next:hover {
+  transform: scale(1.05, 1.05);
 }
 
 @media (min-width: 734px) and (max-width: 1230px) {
@@ -240,5 +241,9 @@ span {
 
   .next {
     font-size: 25px;
+  }
+
+  .card:hover {
+    transform: none;
   }
 }
