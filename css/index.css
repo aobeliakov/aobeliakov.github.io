@@ -1,0 +1,90 @@
+* {
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  background-color: rgb(220, 220, 220);
+}
+
+h2 {
+  text-align: center;
+}
+
+form {
+  padding-top: 100px;
+  display: grid;
+  width: 50%;
+  margin: auto;
+}
+
+input {
+  margin-bottom: 20px;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.sidebar_box {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  position: fixed;
+  height: 100%;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  display: table;
+}
+
+.basic_info {
+  font-size: 12px;
+}
+
+.links {
+  margin-top: 100px;
+  width: 200px;
+}
+
+.links a {
+  text-transform: uppercase;
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.links a:hover {
+  background-color: rgb(100, 70, 70);
+  color: white;
+}
+
+.content {
+  margin-left: 200px;
+}
+
+.block {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.photo {
+  width: 100%;
+}
+
+.content div.block:nth-child(2n) {
+  background-color: rgb(100, 70, 70);
+  color: white;
+}
+
+.content div {
+  height: 100vh;
+}
+
+.very_good_man,
+.good_things {
+  padding: 70px 0;
+  text-align: center;
+  font-size: 20px;
+}
+
+footer {
+  text-align: center;
+}
