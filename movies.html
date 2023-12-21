@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/movies.css" />
+  <title>Эльбрус Кино</title>
+</head>
+
+<body>
+  <header>
+    <div class="navigation">
+      <div class="logo">
+        <img src="./img/logo.svg" alt="logo" />
+      </div>
+      <div class="menu">
+        <div id="current" class="menu_item">Мое Кино</div>
+        <div class="not_chosen menu_item">Магазин</div>
+        <div class="not_chosen menu_item">Покупки</div>
+        <div class="search_icon menu_item">
+          <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="1">
+              <path
+                d="M15.5455 9.11273C15.5455 13.182 12.2554 16.3855 8.27273 16.3855C4.20347 16.3855 1 13.0954 1 9.11273C1 5.04346 4.29005 1.84 8.27273 1.84C12.2554 1.84 15.5455 5.13004 15.5455 9.11273Z"
+                stroke-width="2" stroke-miterlimit="10" />
+              <path d="M13.0362 14.6538L20.3089 21.84" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div id="search_icon_adaptive">
+        <img src="./img/icon_search_adaptive.svg" alt="search icon" />
+      </div>
+      <div id="profile_image">
+        <img src="./img/profile_photo.png" alt="profile photo" />
+      </div>
+      <div id="burger_icon_adaptive">
+        <img src="./img/burger.svg" alt="menu icon">
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="new">
+        <div class="cards_name">Новое в подписке</div>
+        <div class="cards">
+          <div class="card" id="new_card_1">
+            <div>
+              <div class="new_image">
+                <div class="rating new_rating">
+                  <span>8.4</span>
+                </div>
+                <img class="new_movie_image" src="./img/new_movie_1.png" alt="Нулевой пациент" />
+              </div>
+            </div>
+            <div class="description">
+              <div class="movie_name">Нулевой пациент</div>
+              <div class="movie_desc">2022, драма, детектив</div>
+            </div>
+          </div>
+          <div class="card" id="new_card_2">
+            <div>
+              <div class="new_image">
+                <div class="rating new_rating">
+                  <span>8.3</span>
+                </div>
+                <img class="new_movie_image" src="./img/new_movie_2.png" alt="Нулевой пациент" />
+              </div>
+            </div>
+            <div class="description">
+              <div class="movie_name">Мажор</div>
+              <div class="movie_desc">2014, драма, криминал</div>
+            </div>
+          </div>
+          <div class="card" id="new_card_3">
+            <div class="new_image">
+              <div class="rating new_rating">
+                <span>5.2</span>
+              </div>
+              <img class="new_movie_image" src="./img/new_movie_3.png" alt="Нулевой пациент" />
+            </div>
+            <div class="description">
+              <div class="movie_name">Флешбэк</div>
+              <div class="movie_desc">2022, боевик, триллер</div>
+            </div>
+          </div>
+          <div class="next">〉</div>
+        </div>
+      </div>
+      <div class="recommended">
+        <div class="cards_name">Рекомендуем посмотреть</div>
+        <div class="cards">
+          <div class="card" id="rec_card_1">
+            <div class="rec_image">
+              <div class="rating rec_rating">
+                <span>8.7</span>
+              </div>
+              <img class="rec_movie_image" src="./img/rec_movie_1.png" alt="Всё везде и сразу" />
+            </div>
+            <div class="description">
+              <div class="movie_name">Всё, везде и сразу</div>
+              <div class="movie_desc">2021, фантастика, комедия</div>
+            </div>
+          </div>
+          <div class="card" id="rec_card_2">
+            <div class="rec_image">
+              <div class="rating rec_rating">
+                <span>6.3</span>
+              </div>
+              <img class="rec_movie_image" src="./img/rec_movie_2.png" alt="Всё везде и сразу" />
+            </div>
+            <div class="description">
+              <div class="movie_name">Триггер</div>
+              <div class="movie_desc">2020, драма</div>
+            </div>
+          </div>
+          <div class="card" id="rec_card_3">
+            <div class="rec_image">
+              <div class="rating rec_rating">
+                <span>6.7</span>
+              </div>
+              <img class="rec_movie_image" src="./img/rec_movie_3.png" alt="Всё везде и сразу" />
+            </div>
+            <div class="description">
+              <div class="movie_name">Постучись в мою дверь</div>
+              <div class="movie_desc">2020, мелодрама, комедия</div>
+            </div>
+          </div>
+          <div class="next">〉</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

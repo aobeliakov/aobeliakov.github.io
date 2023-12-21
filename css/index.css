@@ -1,5 +1,5 @@
 * {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 body {
@@ -17,6 +17,18 @@ form {
   margin: auto;
 }
 
+.portfolio_links a{
+  font-weight: bolder;
+  text-transform: none;
+  text-decoration: none;
+  color: rgb(73, 51, 51);
+}
+
+.portfolio_links a:hover {
+  text-decoration: underline;
+  color: rgb(100, 70, 70);
+}
+
 input {
   margin-bottom: 20px;
   padding: 10px 0;
@@ -30,7 +42,7 @@ input {
   position: fixed;
   height: 100%;
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   display: table;
 }
 

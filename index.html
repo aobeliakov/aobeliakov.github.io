@@ -1,69 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/index.css" />
-    <title>Portfolio</title>
-  </head>
 
-  <body>
-    <div class="sidebar_box">
-      <div class="inner_sidebar_box">
-        <img class="photo" src="./img/photo.jpeg" alt="my photo" />
-        <h3 class="name">Beliakov Andrei</h3>
-        <div class="basic_info">
-          <p>Software Engineer</p>
-          <p>Musician</p>
-          <p>Good man</p>
-        </div>
-        <div class="links">
-          <a href="#portfolio">portfolio</a>
-          <a href="#about">about me</a>
-          <a href="#contacts">contacts</a>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <title>Portfolio</title>
+</head>
+
+<body>
+  <div class="sidebar_box">
+    <div class="inner_sidebar_box">
+      <img class="photo" src="./img/photo.jpeg" alt="my photo" />
+      <h3 class="name">Beliakov Andrei</h3>
+      <div class="basic_info">
+        <p>Software Engineer</p>
+        <p>Musician</p>
+        <p>Good man</p>
+      </div>
+      <div class="links">
+        <a href="#portfolio">portfolio</a>
+        <a href="#about">about me</a>
+        <a href="#contacts">contacts</a>
       </div>
     </div>
-    <main>
-      <div class="content">
-        <div class="block" id="portfolio">
-          <h2>Portfolio</h2>
-          <p class="good_things">Lots of simple little things</p>
-        </div>
-        <div class="block" id="about">
-          <h2>About me</h2>
-          <p class="very_good_man">A Very Good Man</p>
-        </div>
-        <div class="block" id="contacts">
-          <h2>Contact me</h2>
-          <form id="form" action="#contacts">
-            <input
-              id="name"
-              type="text"
-              value="Name"
-              onfocus="this.value=''"
-              required
-            />
-            <input
-              id="email"
-              type="text"
-              value="Email"
-              onfocus="this.value=''"
-              required
-            />
-            <input
-              id="phone_number"
-              type="text"
-              value="Phone Number"
-              onfocus="this.value=''"
-              required
-            />
-            <input type="submit" value="Submit" />
-          </form>
-        </div>
+  </div>
+  <main>
+    <div class="content">
+      <div class="block" id="portfolio">
+        <h2>Portfolio</h2>
+        <p class="good_things">Lots of simple little things:</p>
+      <div class="portfolio_links">
+        <a id="movies_project" href="./movies.html">MOVIES</a>
       </div>
-    </main>
-    <footer>&copy; 2023 Beliakov Andrei. All Rights Reserved.</footer>
-  </body>
+      <div class="block" id="about">
+        <h2>About me</h2>
+        <p class="very_good_man">A Very Good Man</p>
+      </div>
+      <div class="block" id="contacts">
+        <h2>Contact me</h2>
+        <form id="form" action="#contacts">
+          <input id="name" type="text" value="Name" onfocus="this.value=''" required />
+          <input id="email" type="text" value="Email" onfocus="this.value=''" required />
+          <input id="phone_number" type="text" value="Phone Number" onfocus="this.value=''" required />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer>&copy; 2023 Beliakov Andrei. All Rights Reserved.</footer>
+</body>
+
 </html>
