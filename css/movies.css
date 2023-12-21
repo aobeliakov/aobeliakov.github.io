@@ -46,9 +46,12 @@ div.menu_item {
   padding: 28px 0 0 0;
 }
 
-.not_chosen:hover {
+.not_chosen:hover,
+svg:hover,
+img:hover {
   opacity: 1;
   color: #ffbb5b;
+  cursor: pointer;
 }
 
 .search_icon {
@@ -61,7 +64,6 @@ svg {
 }
 
 svg:hover {
-  opacity: 1;
   stroke: #ffbb5b;
 }
 
@@ -146,10 +148,12 @@ span {
 }
 
 .card,
-.new_movie_image,
-.card,
-.rec_movie_image {
-  width: 100%;
+.movie_image {
+  width: 99%;
+}
+
+.card:hover {
+  transform: scale(1.05,1.05);
 }
 
 @media (min-width: 734px) and (max-width: 1230px) {
