@@ -60,17 +60,22 @@ function updateNumbers() {
 
 function cleanRow(element) {
   const currentNumber = element.parentNode.querySelector('.nmbr').textContent;
-  const allNumbers = document.querySelectorAll('.nmbr');
-  allNumbers.forEach((e) => {
-    if (currentNumber === e.textContent) {
-      e.parentNode.parentNode.removeChild(e.parentNode);
-    }
-  });
+  if (currentNumber > 1) {
+    const allNumbers = document.querySelectorAll('.nmbr');
+    allNumbers.forEach((e) => {
+      if (currentNumber === e.textContent) {
+        e.parentNode.parentNode.removeChild(e.parentNode);
+      }
+    });
+    updateNumbers();
+  }
 }
 function constructInitialDiv(initial) {
   const initRow = document.createElement('div');
   initRow.className = 'rwInit';
-  initRow.setAttribute('data-tooltip', initial);
+  if (initial.length > 18) {
+    initRow.setAttribute('data-tooltip', initial);
+  }
 
   const number = document.createElement('div');
   number.className = 'nmbr';
@@ -100,7 +105,9 @@ function constructTranlitDiv(initial) {
 
   const row = document.createElement('div');
   row.className = 'rwTrnslt';
-  row.setAttribute('data-tooltip', translitValue);
+  if (translitValue.length > 18) {
+    row.setAttribute('data-tooltip', translitValue);
+  }
 
   const number = document.createElement('div');
   number.className = 'nmbr nmbr-trnslt';
@@ -139,14 +146,27 @@ function addRow() {
 }
 
 function cleanAll() {
+  const initChild = document.getElementById('cntr-init').firstElementChild;
+  const trsltChild = document.getElementById('cntr-trnslt').firstElementChild;
+  console.log(initChild);
+  console.log(trsltChild);
   document.getElementById('cntr-init').innerHTML = '';
+  document.getElementById('cntr-init').appendChild(initChild);
   document.getElementById('cntr-trnslt').innerHTML = '';
+  document.getElementById('cntr-trnslt').appendChild(trsltChild);
 }
 
 const addButton = document.getElementById('add-button');
 const cleanButton = document.getElementById('clean-button');
+const inputField = document.getElementById('input-field');
 
 addButton.addEventListener('click', addRow);
+inputField.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    addRow();
+  }
+});
+
 cleanButton.addEventListener('click', cleanAll);
 
 const allDeleteIcons = document.querySelectorAll('.dlt');
