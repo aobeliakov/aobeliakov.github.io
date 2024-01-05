@@ -73,7 +73,7 @@ function cleanRow(element) {
 function constructInitialDiv(initial) {
   const initRow = document.createElement('div');
   initRow.className = 'rwInit';
-  if (initial.length > 18) {
+  if (initial.length > 19) {
     initRow.setAttribute('data-tooltip', initial);
   }
 
@@ -148,8 +148,6 @@ function addRow() {
 function cleanAll() {
   const initChild = document.getElementById('cntr-init').firstElementChild;
   const trsltChild = document.getElementById('cntr-trnslt').firstElementChild;
-  console.log(initChild);
-  console.log(trsltChild);
   document.getElementById('cntr-init').innerHTML = '';
   document.getElementById('cntr-init').appendChild(initChild);
   document.getElementById('cntr-trnslt').innerHTML = '';
