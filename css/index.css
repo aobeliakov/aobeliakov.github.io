@@ -164,7 +164,6 @@ body {
 }
 [data-tooltip]:hover::after {
   opacity: 1; 
-  /* top: 2em;  */
 }
 
 .cleanButtonContainer {
