@@ -2,57 +2,58 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./css/index.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap"
-    rel="stylesheet">
-  <title>Portfolio</title>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <title>Транслит</title>
 </head>
 
 <body>
-  <div class="sidebar_box">
-    <div class="inner_sidebar_box">
-      <img class="photo" src="./img/photo.jpeg" alt="my photo" />
-      <h3 class="name">Beliakov Andrei</h3>
-      <div class="basic_info">
-        <p>Software Engineer</p>
-        <p>Musician</p>
-        <p>Good man</p>
-      </div>
-      <div class="links">
-        <a href="#portfolio">portfolio</a>
-        <a href="#about">about me</a>
-        <a href="#contacts">contacts</a>
-      </div>
-    </div>
-  </div>
-  <main>
-    <div class="content">
-      <div class="block" id="portfolio">
-        <h2>Portfolio</h2>
-        <p class="good_things">Lots of simple little things:</p>
-      <div class="portfolio_links">
-      </div>
-      <div class="block" id="about">
-        <h2>About me</h2>
-        <p class="very_good_man">A Very Good Man</p>
-      </div>
-      <div class="block" id="contacts">
-        <h2>Contact me</h2>
-        <form id="form" action="#contacts">
-          <input id="name" type="text" placeholder="Name" onfocus="this.value=''" required />
-          <input id="email" type="text" placeholder="Email" onfocus="this.value=''" required />
-          <input id="phone_number" type="text" placeholder="Phone Number" onfocus="this.value=''" required />
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-    </div>
-  </main>
-  <footer>&copy; 2023 Beliakov Andrei. All Rights Reserved.</footer>
-</body>
+    <div class="container">
+        <div class="logo">T.R.A.N.S.L.I.T.</div>
+        <div class="input">
+            <input class="inputField" id="input-field" type="text" placeholder="Начните вводить текст">
+            <button class="add" id="add-button">Добавить</button>
+        </div>
 
+        <div class="cntr" id="cntr">
+            <div class="cntrInit" id="cntr-init">
+                <div class="rwInit" data-tooltip="Привет">
+                    <div class="nmbr">1</div>
+                    <div class="init">Привет</div>
+                    <div class="dlt dlt-init"><img src="./icons/close_icon_small.svg" alt=""></div>
+                </div>
+                <div class="rwInit"  data-tooltip="Lorem ipsum dolorsit, amet consectetur amet consectetur">
+                    <div class="nmbr">2</div>
+                    <div class="init">Lorem ipsum dolorsit, amet consectetur amet consectetur</div>
+                    <div class="dlt dlt-init"><img src="./icons/close_icon_small.svg" alt=""></div>
+                </div>
+            </div>
+            <div class="cntrTrnslt" id="cntr-trnslt">
+                <div class="rwTrnslt" data-tooltip="Privet">
+                    <div class="nmbr nmbr-trnslt">1</div>
+                    <div class="trnltd">Privet</div>
+                    <div class="dlt"><img src="./icons/close_icon_small.svg" alt=""></div>
+                </div>
+                <div class="rwTrnslt" data-tooltip="Lorem ipsum dolorsit, amet consectetur amet consectetur">
+                    <div class="nmbr nmbr-trnslt">2</div>
+                    <div class="trnltd">Lorem ipsum dolorsit, amet consectetur amet consectetur</div>
+                    <div class="dlt"><img src="./icons/close_icon_small.svg" alt=""></div>
+                </div>
+            </div>
+        </div>
+
+        <button class="cleanButton" id="clean-button">
+            <div class="cleanButtonContainer">
+                <img src="./icons/close_icon_large.svg"></img>Очистить всё
+            </div>
+        </button>
+    </div>
+</body>
+<script src="./index.js"></script>
 </html>
