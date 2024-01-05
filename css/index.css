@@ -1,3 +1,7 @@
+:root {
+  --black: #111111;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -5,6 +9,7 @@
   align-items: center;
   width: 500px;
   margin: 0 auto;
+  font-family: IBM Plex Mono;
 }
 
 .translationContainer {
@@ -13,15 +18,10 @@
   flex-shrink: 0;
 }
 
-.pair {
-  display: flex;
-}
-
 .logo {
   padding-top: 100px;
   color: #4520ab;
   font-size: 40px;
-  font-family: IBM Plex Mono;
   font-weight: 600;
   height: 200px;
   flex-shrink: 0;
@@ -30,9 +30,9 @@
 .add {
   color: white;
   font-size: 18px;
-  font-family: IBM Plex Mono;
+  font-family: inherit;
   font-weight: 400;
-  background: #111111;
+  background: var(--black);
   border-radius: 8px;
   margin: 8px;
   border: 0;
@@ -41,11 +41,12 @@
 .input {
   display: flex;
   border-radius: 14px;
-  border: 2px #111111 solid;
+  border: 2px var(--black) solid;
   height: 56px;
   width: 100%;
   justify-content: space-between;
   flex-shrink: 0;
+  font-family: inherit;
 }
 
 .inputField {
@@ -53,16 +54,16 @@
   border: 0px;
   margin: 10px;
   width: 400px;
-  color: #111111;
+  color: var(--black);
   font-size: 18px;
-  font-family: IBM Plex Mono;
+  font-family: inherit;
   font-weight: 400;
 }
 
 .rwInit {
   display: flex;
   justify-content: space-between;
-  border-right: 1px solid black;
+  border-right: 1px solid var(--black);
 }
 
 .init {
@@ -98,17 +99,17 @@
 }
 
 .rwInit:not(:first-child) {
-  border-top: 1px solid black;
+  border-top: 1px solid var(--black);
 }
 
 .rwTrnslt {
   display: flex;
   justify-content: space-between;
-  border-left: 1px solid black;
+  border-left: 1px solid var(--black);
 }
 
 .rwTrnslt:not(:first-child) {
-  border-top: 1px solid black;
+  border-top: 1px solid var(--black);
 }
 
 .cntrInit {
@@ -127,9 +128,9 @@
   display: flex;
   width: 100%;
   justify-content: space-around;
-  color: #111111;
+  color: var(--black);
   font-size: 18px;
-  font-family: IBM Plex Mono;
+  font-family: inherit;
   font-weight: 400;
   line-height: 40px;
   background-color: #f0f0f0;
@@ -139,7 +140,7 @@
 }
 
 [data-tooltip] {
-  position: relative; 
+  position: relative;
 }
 
 [data-tooltip]::after {
@@ -148,10 +149,10 @@
   width: auto;
   height: auto;
   left: 30px;
-  top: 30px; 
+  top: 30px;
   border-radius: 8px;
-  border: 1px solid black;
-  background: #ffffff;
+  border: 1px solid var(--black);
+  background: white;
   padding: 1em;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   pointer-events: none;
@@ -159,8 +160,9 @@
   transition: 0.5s;
   z-index: 10;
 }
+
 [data-tooltip]:hover::after {
-  opacity: 1; 
+  opacity: 1;
 }
 
 .cleanButtonContainer {
@@ -195,23 +197,28 @@ a {
 
   .cntr {
     flex-direction: column;
+    width: 95%;
+  }
+
+  .input {
+    width: 95%;
   }
 
   .cntrTrnslt:has(div) {
     width: 100%;
-    border-top: 1px solid black;
+    border-top: 1px solid var(--black);
   }
 
   .cntrTrnslt {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
   }
 
   .cntrInit:has(div) {
     width: 100%;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--black);
   }
 
   .rwInit {
@@ -219,7 +226,7 @@ a {
   }
 
   .rwTrnslt {
-    border-left: 0 solid black;
+    border-left: 0 solid var(--black);
   }
 
   .dlt-init,
