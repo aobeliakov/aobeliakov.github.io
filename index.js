@@ -1,175 +1,194 @@
-const TRANSLITE_DICTIONARY = {
-  a: 'a',
-  б: 'b',
-  в: 'v',
-  г: 'g',
-  д: 'd',
-  е: 'e',
-  ё: 'io',
-  ж: 'zh',
-  з: 'z',
-  и: 'i',
-  й: 'i',
-  к: 'k',
-  л: 'l',
-  м: 'm',
-  н: 'n',
-  о: 'o',
-  п: 'p',
-  р: 'r',
-  с: 's',
-  т: 't',
-  у: 'u',
-  ф: 'f',
-  х: 'h',
-  ц: 'c',
-  ч: 'ch',
-  ш: 'sh',
-  щ: 'shch',
-  ъ: '',
-  ы: 'y',
-  ь: "'",
-  э: 'e',
-  ю: 'iu',
-  я: 'ia',
-};
+const add = document.querySelector('.add')
+const clear = document.querySelector('.clear')
 
-function translit(str) {
-  let translited = '';
-  for (let i = 0; i < str.length; i += 1) {
-    if (str[i].toLowerCase() in TRANSLITE_DICTIONARY) {
-      if (str[i] === str[i].toUpperCase()) {
-        translited += TRANSLITE_DICTIONARY[str[i].toLowerCase()].toUpperCase();
-      } else {
-        translited += TRANSLITE_DICTIONARY[str[i]];
-      }
-    } else {
-      translited += str[i];
+const storage = JSON.parse(localStorage.getItem('users')) || {}
+
+/**
+ * Функция добавления слушателей на кнопки удаления и изменения
+ * в карточке пользователя
+ * @param {HTMLDivElement} userCard - карточка пользователя
+ */
+function setListeners(userCard) {
+    const deleteBtn = userCard.querySelector('.delete')
+    const changeBtn = userCard.querySelector('.change')
+
+    const userEmail = deleteBtn.dataset.deleteUserEmail
+
+    deleteBtn.addEventListener('click', () => {
+        console.log(
+            `%c Удаление пользователя ${userEmail} `,
+            'background: red; color: white',
+        )
+        removeCard(userEmail)
+    })
+
+    changeBtn.addEventListener('click', () => {
+        console.log(
+            `%c Изменение пользователя ${userEmail} `,
+            'background: green; color: white',
+        )
+        updateCard(userEmail)
+    })
+}
+
+/**
+ * Функция создания карточки пользователя
+ * @param {Object} data - объект с данными пользователя
+ * @param {string} data.name - имя пользователя
+ * @param {string} data.secondName - фамилия пользователя
+ * @param {string} data.email - email пользователя
+ * @param {string} data.role - role пользователя
+ * @returns {string} - возвращает строку с разметкой карточки пользователя
+ */
+function createCard({ name, secondName, email, role }) {
+    return `
+        <div data-user=${email} class="user-outer">
+            <div class="user-info">
+                <p>${name}</p>
+                <p>${secondName}</p>
+                <p class="email">${email}</p>
+                <p>${role}</p>
+            </div>
+            <div class="menu">
+                <button data-delete-user-email=${email} class="delete">Удалить</button>
+                <button data-change-user-email=${email} class="change">Изменить</button>
+            </div>
+        </div>
+    `
+}
+
+/**
+ * Функция перерисовки карточек пользователей при загрузке страницы
+ * @param {Object} storage - объект с данными пользователей
+ */
+function rerenderCards(storage) {
+    const users = document.querySelector('.users')
+
+    if (!storage) {
+        console.log('localStorage пустой')
+        return
     }
-  }
-  return translited;
+
+    users.innerHTML = ''
+
+    Object.keys(storage).forEach((email) => {
+        const userData = storage[email]
+        const userCard = document.createElement('div')
+        userCard.className = 'user'
+        userCard.dataset.email = email
+        userCard.innerHTML = createCard(userData)
+        users.append(userCard)
+        setListeners(userCard)
+    })
 }
 
-function updateNumbers() {
-  const allNumbers = document.querySelectorAll('.nmbr');
-  for (let i = 0; i < allNumbers.length / 2; i += 1) {
-    allNumbers[i].textContent = i + 1;
-    allNumbers[allNumbers.length / 2 + i].textContent = i + 1;
-  }
+/**
+ * Функция добавления карточки пользователя в список пользователей и в localStorage
+ * @param {Event} e - событие клика по кнопке добавления
+ */
+function addCard(e) {
+    e.preventDefault()
+    const newName = document.querySelector('#name')
+    const newSecondName = document.querySelector('#secondName')
+    const newEmail = document.querySelector('#email')
+    const newRole = document.querySelector('#role')
+
+    const users = document.querySelector('.users')
+
+    if (!newEmail.value
+        || !newName.value
+        || !newSecondName.value
+        || !newRole.value
+    ) {
+        resetInputs(newName, newSecondName, newEmail, newRole)
+        return
+    }
+
+    const data = {
+        name: newName.value,
+        secondName: newSecondName.value,
+        email: newEmail.value,
+        role: newRole.value,
+    }
+
+    if (newEmail.value in storage) {
+        storage[newEmail.value] = data
+        const userInfo = document.querySelector(
+            `[data-user="${newEmail.value}"]>.user-info`,
+        )
+
+        userInfo.innerHTML = `<div class="user-info">
+                    <p>${newName.value}</p>
+                    <p>${newSecondName.value}</p>
+                    <p class="email">${newEmail.value}</p>
+                    <p>${newRole.value}</p>
+        </div>`
+    } else {
+        storage[newEmail.value] = data
+
+        const userCard = document.createElement('div')
+        userCard.className = 'user'
+        userCard.dataset.email = newEmail.value
+        userCard.innerHTML = createCard(data)
+        users.append(userCard)
+        setListeners(userCard)
+    }
+
+    // Добавление данных в localStorage
+    localStorage.setItem('users', JSON.stringify(storage))
+    resetInputs(newName, newSecondName, newEmail, newRole)
+
+    console.log(storage)
 }
 
-function cleanRow(element) {
-  const currentNumber = element.parentNode.querySelector('.nmbr').textContent;
-  if (currentNumber > 1) {
-    const allNumbers = document.querySelectorAll('.nmbr');
-    allNumbers.forEach((e) => {
-      if (currentNumber === e.textContent) {
-        e.parentNode.parentNode.removeChild(e.parentNode);
-      }
-    });
-    updateNumbers();
-  }
-}
-function constructInitialDiv(initial) {
-  const initRow = document.createElement('div');
-  initRow.className = 'rwInit';
-  if (initial.length > 19) {
-    initRow.setAttribute('data-tooltip', initial);
-  }
-
-  const number = document.createElement('div');
-  number.className = 'nmbr';
-
-  const init = document.createElement('div');
-  init.className = 'init';
-
-  const deleteIcon = document.createElement('div');
-  deleteIcon.className = 'dlt dlt-init';
-  deleteIcon.innerHTML = '<img src="./icons/close_icon_small.svg" alt="">';
-  deleteIcon.addEventListener('click', () => {
-    cleanRow(deleteIcon);
-  });
-
-  number.textContent = '1';
-  init.textContent = initial;
-
-  initRow.appendChild(number);
-  initRow.appendChild(init);
-  initRow.appendChild(deleteIcon);
-
-  return initRow;
+/**
+ * Функция очистки полей ввода
+ * @param {HTMLInputElement} inputs
+ */
+function resetInputs(...inputs) {
+    inputs.forEach((input) => {
+        input.value = ''
+    })
 }
 
-function constructTranlitDiv(initial) {
-  const translitValue = translit(initial);
-
-  const row = document.createElement('div');
-  row.className = 'rwTrnslt';
-  if (translitValue.length > 18) {
-    row.setAttribute('data-tooltip', translitValue);
-  }
-
-  const number = document.createElement('div');
-  number.className = 'nmbr nmbr-trnslt';
-
-  const trnltd = document.createElement('div');
-  trnltd.className = 'trnltd';
-
-  const deleteIcon = document.createElement('div');
-  deleteIcon.className = 'dlt';
-  deleteIcon.innerHTML = '<img src="./icons/close_icon_small.svg" alt="">';
-  deleteIcon.addEventListener('click', () => {
-    cleanRow(deleteIcon);
-  });
-
-  number.textContent = '1';
-  trnltd.textContent = translitValue;
-
-  row.appendChild(number);
-  row.appendChild(trnltd);
-  row.appendChild(deleteIcon);
-
-  return row;
+// Функция очистки localStorage
+function clearLocalStorage() {
+    localStorage.removeItem('users')
+    window.location.reload()
 }
 
-function addRow() {
-  const inputField = document.getElementById('input-field');
-  if (inputField.value.length > 0) {
-    const initialValue = inputField.value;
-    inputField.value = '';
-    const initRow = constructInitialDiv(initialValue);
-    const trnsltRow = constructTranlitDiv(initialValue);
-    document.getElementById('cntr-init').appendChild(initRow);
-    document.getElementById('cntr-trnslt').appendChild(trnsltRow);
-    updateNumbers();
-  }
+/**
+ * Функция удаления карточки пользователя
+ * @param {string} email - email пользователя
+ */
+function removeCard(email) {
+    delete storage[email]
+    localStorage.setItem('users', JSON.stringify(storage))
+
+    const userCard = document.querySelector(`[data-email="${email}"]`)
+    userCard.parentNode.removeChild(userCard)
 }
 
-function cleanAll() {
-  const initChild = document.getElementById('cntr-init').firstElementChild;
-  const trsltChild = document.getElementById('cntr-trnslt').firstElementChild;
-  document.getElementById('cntr-init').innerHTML = '';
-  document.getElementById('cntr-init').appendChild(initChild);
-  document.getElementById('cntr-trnslt').innerHTML = '';
-  document.getElementById('cntr-trnslt').appendChild(trsltChild);
+/**
+ * Функция изменения карточки пользователя
+ * @param {string} email - email пользователя
+ */
+function updateCard(email) {
+    const newName = document.querySelector('#name')
+    const newSecondName = document.querySelector('#secondName')
+    const newEmail = document.querySelector('#email')
+    const newRole = document.querySelector('#role')
+    newName.value = storage[email].name
+    newSecondName.value = storage[email].secondName
+    newEmail.value = storage[email].email
+    newRole.value = storage[email].role
 }
 
-const addButton = document.getElementById('add-button');
-const cleanButton = document.getElementById('clean-button');
-const inputField = document.getElementById('input-field');
+// Добавление слушателей на кнопки добавления и очистки
+add.addEventListener('click', addCard)
+clear.addEventListener('click', clearLocalStorage)
 
-addButton.addEventListener('click', addRow);
-inputField.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    addRow();
-  }
-});
-
-cleanButton.addEventListener('click', cleanAll);
-
-const allDeleteIcons = document.querySelectorAll('.dlt');
-allDeleteIcons.forEach((element) => {
-  element.addEventListener('click', () => {
-    cleanRow(element);
-  });
-});
+// При загрузке страницы перерисовываются карточки пользователей
+window.addEventListener('load', () => {
+    rerenderCards(storage)
+})
