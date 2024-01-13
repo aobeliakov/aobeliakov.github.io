@@ -3,43 +3,31 @@
 
 <head>
     <meta charset="UTF-8">
-    <link href="./css/index.css" rel="stylesheet">
-    <script defer src="index.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Elbrus Super Form</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script defer src="js/index.js"></script>
+    <title>Memory game</title>
 </head>
 
 <body>
-<div class="container">
-    <h1 class="mainHeading">Elbrus Super Form</h1>
-    <main>
-        <div class="form">
-            <form>
-                <label for="name">Name</label>
-                <input class="name" id="name" type="text">
-
-                    <label for="secondName">Second name</label>
-                    <input class="secondName" id="secondName" type="text">
-
-                    <label for="email">Email</label>
-                    <input class="email" id="email" type="email">
-
-                    <label for="role">Role</label>
-                    <input class="role" id="role" type="text">
-
-                    <button class="btn add">Отправить</button>
-                </form>
-                <button class="btn clear">Очистить localStorage</button>
-            </div>
-
-            <div class="mainUsers">
-                <h3>Users:</h3>
-                <div class="users"></div>
-            </div>
-        </main>
-
+    <div id="#container">
+        <div #sub-container>
+            <h1>Memmory game</h1>
+            <h2>Instructions:</h2>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda veritatis consequatur ratione officia
+            nulla fugit eaque eos voluptate, ab perferendis deserunt sequi voluptas possimus voluptates incidunt
+            deleniti, labore dolorum! Ratione?
+        </div>
+        <div id="buttons">
+            <p>Difficulty level:</p>
+            <button id="btn-easy" data="data-easy-level">Easy</button>
+            <button id="btn-med" data="data-middle-level">Medium</button>
+            <button id="btn-hard" data="data-hard-level">Hard</button> 
+        </div>
+        <div id="reset-container" >
+            <p>Reset game:</p>
+            <button id="btn-reset">Reset</button>
+        </div>
+        <div id="cards-container"></div>
     </div>
 </body>
 
