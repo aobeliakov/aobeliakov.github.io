@@ -2,20 +2,38 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <script defer src="index.js"></script>
-  <title>Start Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <script defer src="./index.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/reset200802.css">
+    <title>Эльбрус Калькулятор</title>
 </head>
 
 <body>
-  <div class="container">
-    <!--     Здесь будет начальная страница с формой-->
-    <input id="input" placeholder="Введите ваше имя">
-    <button id="btn">Начать игру</button>
-  </div>
+    <div class="container">
+        <h2>C.A.L.C.U.L.A.T.O.R</h2>
+        <input id="input" type="text">
+        <div class="history">
+            <div class="operation">
+                <span class="counter">1)</span>
+                <span class="result">1 + 2 = 3</span>
+            </div>
+            <div class="operation">
+                <span class="counter">2)</span>
+                <span class="result">2 - 2 = 0</span>
+            </div>
+        </div>
+        <div id="buttons">
+            <div id="signs">
+                <button id="plus" class="sign" data="data-math-operation">+</button>
+                <button id="minus" class="sign" data="data-math-operation">-</button>
+                <button id="multiply" class="sign" data="data-math-operation">*</button>
+                <button id="divide" class="sign" data="data-math-operation">/</button>
+            </div>
+            <button id="equal">=</button>
+        </div>
+    </div>
 </body>
 
 </html>
