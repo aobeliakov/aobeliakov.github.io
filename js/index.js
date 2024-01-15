@@ -1,34 +1,66 @@
-const words = [
-  'argument',
-  'lounge',
-  'miracle',
-  'distinct',
-  'fight',
-  'monstrous',
-  'use',
-  'layout',
-  'approach',
-  'credit',
-  'trunk',
-  'reveal',
-  'crosswalk',
-  'history',
-  'bowel',
-  'color',
-  'war',
-  'trick',
-  'reconcile',
-  'bacon',
-  'texture',
-  'slab',
-  'role',
-  'hit',
+const NOUNS = [
+  'river',
+  'enthusiasm',
+  'city',
+  'army',
+  'drawer',
+  'college',
+  'attitude',
+  'refrigerator',
+  'improvement',
+  'signature',
+  'chemistry',
+  'literature',
+  'suggestion',
+  'cousin',
+  'member',
+  'analysis',
+  'steak',
+  'language',
+  'communication',
+  'health',
+  'bathroom',
+  'poet',
+  'anxiety',
   'variation',
-  'patch',
-  'participa',
-  'chew',
-  'frog',
-  'available',
+  'video',
+  'coffee',
+  'opportunity',
+  'engine',
+  'assumption',
+];
+
+const ADJECTIVES = [
+  'Responsible',
+  'Certain',
+  'Feeble',
+  'Hot',
+  'Recondite',
+  'Overrated',
+  'Resonant',
+  'Shocking',
+  'Phobic',
+  'Uppity',
+  'Teeny-tiny',
+  'Therapeutic',
+  'Adjoining',
+  'Shy',
+  'Healthy',
+  'Uninterested',
+  'Woozy',
+  'Acceptable',
+  'Inner',
+  'Eatable',
+  'Loutish',
+  'Obtainable',
+  'Jealous',
+  'Boiling',
+  'Grubby',
+  'Eastern',
+  'Tasteless',
+  'Accidental',
+  'Aromatic',
+  'Dead'
 ];
 
 let score = 0;
@@ -39,7 +71,9 @@ let timer = setInterval(function () {
   if (sec < 0) {
     clearInterval(timer);
     document.getElementById('timer').innerHTML = 'GAME OVER';
-    document.getElementById('word').style.visibility = 'hidden';
+    // document.getElementById('word').style.visibility = 'hidden';
+    document.getElementById('word').innerHTML = '';
+    document.getElementById('score').style.fontSize = '50px';
   }
 }, 1000);
 
@@ -52,17 +86,20 @@ function wrapWithSpan(word) {
   return wrapped;
 }
 
-changeWord();
+changePhrase();
 
 let currentTimer;
 let currentIndex = 0;
 document.onkeydown = function (e) {
   const spans = document.querySelectorAll('span');
   if (e.key === spans[currentIndex].textContent) {
+    if (spans[currentIndex].textContent === ' ') {
+      spans[currentIndex].style.textDecoration = 'underline'; 
+    }
     spans[currentIndex].style.color = 'lime';
     console.log('yeah');
     if (currentIndex === spans.length - 1) {
-      changeWord();
+      changePhrase();
       score += 1;
       scoreDiv = document.getElementById('score');
       scoreDiv.textContent = `Your score: ${score}`;
@@ -82,15 +119,13 @@ document.onkeydown = function (e) {
     setTimeout(() => {
       wrong.style.visibility = 'hidden';
     }, 2000);
-  } 
+  }
 };
 
-function changeWord() {
-  const newWord = words[Math.floor(Math.random() * words.length)];
-  console.log('newWord', newWord);
+function changePhrase() {
+  const newNoun = NOUNS[Math.floor(Math.random() * NOUNS.length)];
+  const newAdj = ADJECTIVES[Math.floor(Math.random() * ADJECTIVES.length)];
   const wordDiv = document.getElementById('word');
-  const wrappedNewWord = wrapWithSpan(newWord);
-  console.log(wrappedNewWord);
+  const wrappedNewWord = wrapWithSpan(`${newAdj} ${newNoun}`);
   wordDiv.innerHTML = wrappedNewWord;
-  console.log(word);
 }
